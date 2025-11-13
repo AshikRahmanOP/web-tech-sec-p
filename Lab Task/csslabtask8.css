@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.section {
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#about {
+    background-color: #ffe4d9;
+}
+
+#education {
+    background-color: #d9f0ff;
+}
+
+#hobbies {
+    background-color: #e7ffd9;
+}
+
+hr {
+    height: 4px;
+    background-color: #333;
+    border: none;
+    width: 90%;
+    margin: 20px auto;
+}

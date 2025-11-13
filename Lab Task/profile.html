@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Profile — Ashik Rahman</title>
+
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="csslabtask7.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="site-title">Department of Computer Science</h1>
+    <p class="site-sub">Student Profile</p>
+  </header>
+
+  <main>
+    <!-- Profile section -->
+    <section class="profile-card" aria-labelledby="student-name">
+      <div class="profile-photo">
+        <!-- replace 'student.jpg' with your actual image file -->
+        <img src="student.jpg" alt="Photo of Ashik Rahman" id="student-photo">
+      </div>
+
+      <div class="profile-info">
+        <h2 id="student-name">Ashik Rahman</h2>
+        <p class="meta"><strong>Department:</strong> Computer Science</p>
+        <p class="meta"><strong>Student ID:</strong> 23-50734-1</p>
+
+        <h3>Short Bio</h3>
+        <p class="bio">
+          I am a computer science student focusing on web technologies and software development.
+          I enjoy building clean, responsive interfaces and learning new frameworks and tools.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> American International University — Bangladesh</p>
+  </footer>
+
+  <script>
+    // small script to set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
