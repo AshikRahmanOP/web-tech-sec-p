@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Admission Form</title>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        fieldset { margin-bottom: 20px; padding: 20px; }
+        legend { font-weight: bold; }
+        label { display: block; margin-top: 10px; }
+    </style>
+</head>
+
+<body>
+
+<h1>University Admission Form</h1>
+
+<form>
+
+    <!-- Personal Information -->
+    <fieldset>
+        <legend>Personal Information</legend>
+
+        <label>Full Name:
+            <input type="text" required maxlength="40">
+        </label>
+
+        <label>Email:
+            <input type="email" required>
+        </label>
+
+        <label>Date of Birth:
+            <input type="date" required>
+        </label>
+
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Male" required> Male  
+        <input type="radio" name="gender" value="Female"> Female  
+        <input type="radio" name="gender" value="Other"> Other
+    </fieldset>
+
+    <!-- Academic Information -->
+    <fieldset>
+        <legend>Academic Information</legend>
+
+        <label>SSC Result:
+            <input type="text" required>
+        </label>
+
+        <label>HSC Result:
+            <input type="text" required>
+        </label>
+
+        <label>Preferred Department:</label>
+        <select required>
+            <option disabled selected>Select Department</option>
+            <option>CSE</option>
+            <option>EEE</option>
+            <option>BBA</option>
+            <option>Architecture</option>
+        </select>
+
+        <label>Interests:</label>
+        <input type="checkbox"> Programming  
+        <input type="checkbox"> Robotics  
+        <input type="checkbox"> AI & ML  
+    </fieldset>
+
+    <!-- File Upload -->
+    <fieldset>
+        <legend>Documents</legend>
+
+        <label>Upload Photo:
+            <input type="file" required>
+        </label>
+
+        <label>Upload Transcript:
+            <input type="file">
+        </label>
+    </fieldset>
+
+    <!-- Buttons -->
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+
+</form>
+
+</body>
+</html>
