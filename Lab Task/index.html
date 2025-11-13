@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="author" content="Ashiqur Rahman" />
+  <meta name="description" content="DailyFlash - Breaking news and trending stories from around the world." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DailyFlash | Home</title>
+
+  <style>
+    /* ---------- Layout & Reset ---------- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; line-height: 1.5; color:#111; background:#f6f8fb; }
+    a { color: #0056d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ---------- Header / Nav ---------- */
+    header.site-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e6e9ef;
+      padding: 18px 24px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      width:48px; height:48px; border-radius:8px;
+      background: linear-gradient(135deg,#0056d6,#00a1ff);
+      display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700;
+      font-size:18px;
+    }
+
+    .brand {
+      display:flex; flex-direction:column;
+    }
+    .brand h1 { font-size:18px; margin-bottom:2px; }
+    .brand p { font-size:12px; color:#666; margin-top:0; }
+
+    nav.main-nav { margin-left:auto; }
+    nav.main-nav ul { list-style:none; display:flex; gap:12px; align-items:center; }
+    nav.main-nav a { padding:8px 10px; border-radius:6px; display:inline-block; color:#263146; }
+    nav.main-nav a.active { background:#e8f0ff; font-weight:700; color:#003ea6; }
+
+    /* ---------- Page wrapper ---------- */
+    .container {
+      width: min(1100px, 96%);
+      margin: 22px auto;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 20px;
+      align-items:start;
+    }
+
+    /* ---------- Main content (articles) ---------- */
+    main.site-main { background: #fff; padding:18px; border-radius:10px; box-shadow: 0 6px 18px rgba(3,12,40,0.04); }
+    .articles section { display:block; }
+    article.story { display:flex; gap:14px; padding:14px 0; border-bottom:1px solid #eef2f6; }
+    article.story:last-child { border-bottom:none; }
+    .thumb { flex:0 0 160px; width:160px; height:100px; overflow:hidden; border-radius:8px; background:#ddd; }
+    .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .story-content { flex:1; }
+    .story-content h2 { font-size:18px; margin-bottom:6px; }
+    .meta { font-size:13px; color:#666; margin-bottom:8px; display:flex; gap:8px; align-items:center; }
+    .summary { color:#333; margin-bottom:8px; }
+
+    .readmore { display:inline-block; padding:6px 10px; border-radius:6px; background:#0056d6; color:white; font-size:13px; }
+
+    /* ---------- Aside / Sidebar ---------- */
+    aside.sidebar { background:#fff; padding:16px; border-radius:10px; box-shadow: 0 6px 18px rgba(3,12,40,0.03); }
+    .top-headlines h3, .editors-pick h4 { margin-bottom:8px; color:#203047; }
+    .top-headlines ul { list-style: none; padding-left:0; }
+    .top-headlines li { margin:8px 0; font-size:14px; }
+    .ad-box { border:2px dashed #e1e6f2; padding:12px; border-radius:8px; text-align:center; margin-top:12px; color:#334; background:#fbfdff; }
+
+    /* ---------- Footer ---------- */
+    footer.site-footer { margin: 20px auto; width: min(1100px, 96%); background:#fff; padding:14px 18px; border-radius:8px; display:flex; justify-content:space-between; gap:12px; align-items:center; border-top:1px solid #eef2f6; }
+    .social a { margin-right:10px; font-size:14px; color:#666; }
+
+    /* ---------- Small utilities ---------- */
+    .back-top { text-align:right; margin-top:10px; }
+    .tag { font-size:12px; background:#eef6ff; padding:4px 8px; border-radius:999px; color:#0046b3; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px){
+      .container { grid-template-columns: 1fr; }
+      nav.main-nav ul { gap:8px; }
+      .thumb { display:none; }
+      article.story { flex-direction:column; }
+    }
+  </style>
+</head>
+<body id="home">
+
+  <header class="site-header" role="banner">
+    <div class="logo" aria-hidden="true">DF</div>
+    <div class="brand">
+      <h1>DailyFlash</h1>
+      <p>Your Source for Instant News</p>
+    </div>
+
+    <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="world.html">World</a></li>
+        <li><a href="sports.html">Sports</a></li>
+        <li><a href="#">Tech</a></li>
+        <li><a href="#">Lifestyle</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Main -->
+    <main class="site-main" role="main">
+      <section class="articles">
+        <!-- Article 1 -->
+        <article class="story" aria-labelledby="a1">
+          <div class="thumb"><img src="https://via.placeholder.com/320x200?text=Climate+Summit" alt="Climate summit"></div>
+          <div class="story-content">
+            <h2 id="a1">World Leaders Meet for Climate Summit</h2>
+            <div class="meta">
+              <time datetime="2025-11-10">Nov 10, 2025</time>
+              <span>•</span>
+              <span class="tag">World</span>
+            </div>
+            <p class="summary">Leaders from around the globe gathered to discuss fresh commitments on emissions reductions and sustainable finance. Delegates emphasized adaptation and equitable support for vulnerable nations.</p>
+            <a class="readmore" href="world.html">Read More</a>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="story" aria-labelledby="a2">
+          <div class="thumb"><img src="https://via.placeholder.com/320x200?text=Championship" alt="Championship"></div>
+          <div class="story-content">
+            <h2 id="a2">National Team Wins Championship</h2>
+            <div class="meta">
+              <time datetime="2025-11-09">Nov 9, 2025</time>
+              <span>•</span>
+              <span class="tag">Sports</span>
+            </div>
+            <p class="summary">In a thrilling final, the national team edged out their rivals in the last minute. Fans celebrated across the country as players praised teamwork and dedication.</p>
+            <a class="readmore" href="sports.html">Read More</a>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="story" aria-labelledby="a3">
+          <div class="thumb"><img src="https://via.placeholder.com/320x200?text=Smartphone+Sales" alt="Smartphone sales"></div>
+          <div class="story-content">
+            <h2 id="a3">New Smartphone Sets Record Sales</h2>
+            <div class="meta">
+              <time datetime="2025-11-08">Nov 8, 2025</time>
+              <span>•</span>
+              <span class="tag">Tech</span>
+            </div>
+            <p class="summary">The latest model from a major manufacturer has broken sales records in its first week, driven by strong pre-orders and positive early reviews praising battery life and camera improvements.</p>
+            <a class="readmore" href="#">Read More</a>
+          </div>
+        </article>
+      </section>
+
+      <div class="back-top">
+        <a href="#top">Back to Top</a>
+      </div>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" role="complementary" aria-labelledby="sidehead">
+      <div class="top-headlines">
+        <h3 id="sidehead">Top Headlines</h3>
+        <ul>
+          <li><a href="#">Country A announces economic package</a></li>
+          <li><a href="#">Breakthrough in renewable energy</a></li>
+          <li><a href="#">Stock markets open higher</a></li>
+          <li><a href="#">Local artist wins international prize</a></li>
+          <li><a href="#">Health authorities issue new guidance</a></li>
+        </ul>
+      </div>
+
+      <div class="editors-pick" style="margin-top:12px;">
+        <h4>Editor's Pick</h4>
+        <p><strong><a href="#">An in-depth look at climate adaptation plans</a></strong></p>
+      </div>
+
+      <div class="ad-box" aria-hidden="true">
+        <p>Advertisement</p>
+        <p style="font-size:13px;color:#334;">Sponsor space — place your ad here</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div>© 2025 DailyFlash — All Rights Reserved.</div>
+    <div class="social">
+      <a href="#" aria-label="Facebook">Facebook</a>
+      <a href="#" aria-label="X (Twitter)">X</a>
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="LinkedIn">LinkedIn</a>
+    </div>
+  </footer>
+
+</body>
+</html>
