@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab Task 10 – Z-index Overlapping Boxes</title>
+
+    <style>
+        body {
+            background: #f5f5f5;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            position: relative;
+            height: 500px;
+            margin-top: 40px;
+        }
+
+        /* Common box style */
+        .box {
+            width: 200px;
+            height: 200px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            position: absolute; /* required */
+        }
+
+        /* Box 1 - Red */
+        .box1 {
+            background: red;
+            top: 40px;
+            left: 40px;
+            z-index: 1; /* lowest */
+        }
+
+        /* Box 2 - Blue */
+        .box2 {
+            background: blue;
+            top: 100px;
+            left: 120px;
+            z-index: 2;
+        }
+
+        /* Box 3 - Green */
+        .box3 {
+            background: green;
+            top: 160px;
+            left: 200px;
+            z-index: 3; /* highest */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align:center;">Lab Task 10: Z-index Layering</h1>
+    <p style="text-align:center;">Three overlapping boxes using <strong>absolute positioning</strong> and <strong>z-index</strong>.</p>
+
+    <div class="container">
+
+        <div class="box box1">Box 1</div>
+        <div class="box box2">Box 2</div>
+        <div class="box box3">Box 3</div>
+
+    </div>
+
+</body>
+</html>
