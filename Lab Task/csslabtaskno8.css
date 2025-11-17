@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en" id="top">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Your Name">
+  <meta name="description" content="TasteHub - Explore our mouth-watering restaurant menu with starters, main course, desserts, and drinks.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TasteHub Restaurant Menu</title>
+
+  <!-- INTERNAL CSS -->
+  <style>
+    /* ---------- Root / base ---------- */
+    :root{
+      --bg: #fafafa;
+      --card: #ffffff;
+      --accent: #b02e2e;     /* deep tomato red */
+      --muted: #6b7280;
+      --accent-2: #0b6b58;   /* green accent */
+      --gap: 18px;
+      --max-width: 1100px;
+      --radius: 12px;
+      --shadow: 0 6px 20px rgba(11,11,11,0.06);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #111827;
+    }
+
+    /* Page layout */
+    html,body{
+      height:100%;
+      margin:0;
+      background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 28px auto;
+      padding: 22px;
+    }
+
+    header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom: 18px;
+    }
+
+    header .brand {
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    /* logo circle */
+    .logo {
+      width:64px;
+      height:64px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#ffd6d6,#ffb3a7);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:var(--shadow);
+      font-weight:700;
+      color:var(--accent);
+      font-size:20px;
+    }
+
+    header h1 {
+      margin:0;
+      font-size:1.6rem;
+      letter-spacing:0.2px;
+    }
+
+    header p.tag {
+      margin:4px 0 0 0;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    /* top nav */
+    nav.topnav {
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    nav.topnav a {
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:8px;
+      color:var(--accent-2);
+      font-weight:600;
+      transition:background .18s, color .18s, transform .08s;
+    }
+
+    nav.topnav a:hover { background: rgba(11,107,88,0.06); transform:translateY(-1px); }
+
+    hr.sep { border:0; height:1px; background:#eef2f5; margin:18px 0; }
+
+    /* page grid: main + aside */
+    .content {
+      display:grid;
+      grid-template-columns: 1fr 280px;
+      gap:var(--gap);
+      align-items:start;
+    }
+
+    /* When screen small stack columns */
+    @media (max-width:900px){
+      .content { grid-template-columns: 1fr; }
+      nav.topnav { justify-content:flex-start; }
+    }
+
+    main.menu {
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
+      padding:20px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    aside.offers {
+      background:var(--card);
+      padding:16px;
+      border-radius:12px;
+      box-shadow:var(--shadow);
+      position:sticky;
+      top:22px;
+      height:fit-content;
+    }
+
+    aside.offers h3 { margin-top:0; }
+    aside.offers ul { margin:8px 0 0 18px; color:var(--muted); }
+
+    /* Section heading */
+    section.menu-section {
+      margin-bottom:18px;
+    }
+    section.menu-section h2 {
+      margin:0 0 10px 0;
+      font-size:1.25rem;
+      color:var(--accent);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    /* menu list layout */
+    .grid-items {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:12px;
+    }
+
+    article.dish {
+      display:flex;
+      gap:12px;
+      background:var(--card);
+      padding:12px;
+      border-radius:10px;
+      align-items:flex-start;
+      box-shadow:0 4px 14px rgba(8,10,12,0.04);
+    }
+
+    .dish img {
+      width:110px;
+      height:82px;
+      object-fit:cover;
+      border-radius:8px;
+      flex-shrink:0;
+    }
+
+    .dish .info {
+      flex:1;
+    }
+
+    .dish strong { display:block; font-size:1rem; margin-bottom:6px; }
+    .dish p { margin:0; color:var(--muted); font-size:0.95rem; line-height:1.3; }
+
+    .price {
+      color:var(--accent-2);
+      font-weight:700;
+      margin-left:8px;
+    }
+
+    .actions {
+      margin-top:10px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    .btn {
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      background:var(--accent-2);
+      color:#fff;
+      box-shadow:0 6px 14px rgba(11,107,88,0.12);
+    }
+
+    .btn.secondary {
+      background:transparent;
+      color:var(--accent-2);
+      border:1px solid rgba(11,107,88,0.08);
+      box-shadow:none;
+    }
+
+    /* Chef's special fieldset */
+    fieldset.chefs {
+      border:1px dashed rgba(176,46,46,0.18);
+      padding:12px;
+      border-radius:10px;
+      background:linear-gradient(180deg, rgba(255,244,244,0.6), rgba(255,255,255,0.4));
+    }
+    fieldset.chefs legend {
+      font-weight:800;
+      color:var(--accent);
+      padding:0 8px;
+    }
+
+    /* Footer */
+    footer.site-footer {
+      margin-top:18px;
+      padding:16px;
+      text-align:center;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+    footer .social a { margin:0 6px; color:var(--accent-2); text-decoration:none; font-weight:600; }
+
+    /* Back to top */
+    .back-top { text-decoration:none; color:var(--muted); font-size:0.95rem; }
+
+    /* small helpers */
+    .muted { color:var(--muted); font-size:0.95rem; }
+    .caption { font-size:0.85rem; color:#9aa0a6; margin-top:6px; }
+
+    /* ---------- Accessibility: focus styles ---------- */
+    a:focus { outline:3px solid rgba(11,107,88,0.12); outline-offset:2px; border-radius:6px; }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">TH</div>
+        <div>
+          <h1>TasteHub Restaurant</h1>
+          <p class="tag">Deliciousness Delivered Fresh Every Day!</p>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Main menu">
+        <a href="#starters">Starters</a>
+        <a href="#maincourse">Main Course</a>
+        <a href="#desserts">Desserts</a>
+        <a href="#drinks">Drinks</a>
+        <a href="#special">Chef's Special</a>
+      </nav>
+    </header>
+
+    <hr class="sep">
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="content">
+      <!-- MAIN MENU -->
+      <main class="menu" role="main">
+
+        <!-- STARTERS -->
+        <section id="starters" class="menu-section" aria-labelledby="starters-heading">
+          <h2 id="starters-heading">Starters</h2>
+
+          <div class="grid-items">
+            <article class="dish" aria-label="Tomato Basil Soup">
+              <img src="https://via.placeholder.com/220x140?text=Soup" alt="Tomato Basil Soup">
+              <div class="info">
+                <strong>Tomato Basil Soup <span class="price">$5.99</span></strong>
+                <p>Fresh vine tomatoes blended with cream and fragrant basil. Served hot with toasted bread.</p>
+                <div class="actions">
+                  <a class="btn" href="#" title="Order Tomato Basil Soup">Order</a>
+                  <a class="btn secondary" href="#" title="Details">Details</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="dish" aria-label="Crispy Spring Rolls">
+              <img src="https://via.placeholder.com/220x140?text=Spring+Rolls" alt="Crispy Spring Rolls">
+              <div class="info">
+                <strong>Crispy Spring Rolls <span class="price">$6.49</span></strong>
+                <p>Golden-fried vegetable rolls served with sweet chili dip — light and crunchy.</p>
+                <div class="actions">
+                  <a class="btn" href="#">Order</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="caption"><a class="back-top" href="#top">Back to Top ↑</a></p>
+        </section>
+
+        <hr>
+
+        <!-- MAIN COURSE -->
+        <section id="maincourse" class="menu-section" aria-labelledby="maincourse-heading">
+          <h2 id="maincourse-heading">Main Course</h2>
+
+          <div class="grid-items">
+            <article class="dish" aria-label="Grilled Chicken Steak">
+              <img src="https://via.placeholder.com/220x140?text=Grilled+Chicken" alt="Grilled Chicken Steak">
+              <div class="info">
+                <strong>Grilled Chicken Steak <span class="price">$12.99</span></strong>
+                <p>Juicy grilled chicken steak with herb butter, mashed potatoes and seasonal vegetables.</p>
+                <div class="actions">
+                  <a class="btn" href="#">Order</a>
+                  <a class="btn secondary" href="#">Add Garlic Bread</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="dish" aria-label="Creamy Alfredo Pasta">
+              <img src="https://via.placeholder.com/220x140?text=Alfredo+Pasta" alt="Creamy Alfredo Pasta">
+              <div class="info">
+                <strong>Creamy Alfredo Pasta <span class="price">$10.49</span></strong>
+                <p>Classic fettuccine in a rich parmesan cream sauce — add chicken for $3.00.</p>
+                <div class="actions">
+                  <a class="btn" href="#">Order</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="caption"><a class="back-top" href="#top">Back to Top ↑</a></p>
+        </section>
+
+        <hr>
+
+        <!-- DESSERTS -->
+        <section id="desserts" class="menu-section" aria-labelledby="desserts-heading">
+          <h2 id="desserts-heading">Desserts</h2>
+
+          <div class="grid-items">
+            <article class="dish" aria-label="Chocolate Lava Cake">
+              <img src="https://via.placeholder.com/220x140?text=Lava+Cake" alt="Chocolate Lava Cake">
+              <div class="info">
+                <strong>Chocolate Lava Cake <span class="price">$7.99</span></strong>
+                <p>Warm molten chocolate cake with a scoop of vanilla ice cream.</p>
+                <div class="actions">
+                  <a class="btn" href="#">Order</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="dish" aria-label="Vanilla Ice Cream">
+              <img src="https://via.placeholder.com/220x140?text=Ice+Cream" alt="Vanilla Ice Cream">
+              <div class="info">
+                <strong>Vanilla Ice Cream <span class="price">$3.49</span></strong>
+                <p>Classic scoop topped with choice of syrup or sprinkles.</p>
+                <div class="actions">
+                  <a class="btn" href="#">Order</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="caption"><a class="back-top" href="#top">Back to Top ↑</a></p>
+        </section>
+
+        <hr>
+
+        <!-- DRINKS -->
+        <section id="drinks" class="menu-section" aria-labelledby="drinks-heading">
+          <h2 id="drinks-heading">Drinks</h2>
+
+          <div class="grid-items">
+            <article class="dish" aria-label="Lemon Iced Tea">
+              <img src="https://via.placeholder.com/220x140?text=Iced+Tea" alt="Lemon Iced Tea">
+              <div class="info">
+                <strong>Lemon Iced Tea <span class="price">$2.99</span></strong>
+                <p>Cold brewed tea with fresh lemon slices and a hint of mint.</p>
+                <div class="actions">
+                  <a class="btn" href="#">Order</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="dish" aria-label="Cold Coffee">
+              <img src="https://via.placeholder.com/220x140?text=Cold+Coffee" alt="Cold Coffee">
+              <div class="info">
+                <strong>Cold Coffee <span class="price">$3.99</span></strong>
+                <p>Chilled espresso with milk and ice — perfect for hot days.</p>
+                <div class="actions">
+                  <a class="btn" href="#">Order</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="caption"><a class="back-top" href="#top">Back to Top ↑</a></p>
+        </section>
+
+        <hr>
+
+        <!-- CHEF'S SPECIAL -->
+        <section id="special" class="menu-section" aria-labelledby="special-heading">
+          <h2 id="special-heading">Chef's Special</h2>
+
+          <fieldset class="chefs" aria-labelledby="special-heading">
+            <legend>Featured</legend>
+
+            <div class="grid-items" style="margin-top:6px;">
+              <article class="dish" aria-label="Honey Glazed Salmon">
+                <img src="https://via.placeholder.com/220x140?text=Salmon" alt="Honey Glazed Salmon">
+                <div class="info">
+                  <strong>Honey Glazed Salmon <span class="price">$18.99</span></strong>
+                  <p>Perfectly grilled salmon with honey-lemon glaze, served with asparagus.</p>
+                </div>
+              </article>
+
+              <article class="dish" aria-label="BBQ Beef Ribs">
+                <img src="https://via.placeholder.com/220x140?text=BBQ+Ribs" alt="BBQ Beef Ribs">
+                <div class="info">
+                  <strong>BBQ Beef Ribs <span class="price">$20.99</span></strong>
+                  <p>Slow-cooked ribs smothered in smoky BBQ sauce — fall-off-the-bone tender.</p>
+                </div>
+              </article>
+            </div>
+          </fieldset>
+
+          <p style="margin-top:10px;"><a class="btn" href="#">Book a Table</a></p>
+          <p class="caption"><a class="back-top" href="#top">Back to Top ↑</a></p>
+        </section>
+
+      </main>
+
+      <!-- ASIDE: Daily Offers -->
+      <aside class="offers" role="complementary" aria-label="Daily offers">
+        <h3>🔥 Today's Offers</h3>
+        <ul>
+          <li>10% off all desserts</li>
+          <li>Buy 1 Get 1 Free on Drinks (2–4 PM)</li>
+          <li>Free garlic bread with any Main Course</li>
+        </ul>
+
+        <hr style="border:none; height:1px; background:#f0f4f6; margin:12px 0;">
+
+        <p class="muted"><strong>Opening Hours</strong><br>10:00 AM – 11:00 PM</p>
+        <p class="muted"><strong>Contact</strong><br>+880 1234-567890</p>
+      </aside>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>📍 123 Food Street, Dhaka • 📞 +880 1234-567890</p>
+      <p class="social">
+        <a href="#" aria-label="Facebook">Facebook</a> |
+        <a href="#" aria-label="Instagram">Instagram</a> |
+        <a href="#" aria-label="Twitter">Twitter</a>
+      </p>
+      <p>© 2025 TasteHub Restaurant | All Rights Reserved</p>
+      <p><a class="back-top" href="#top">Back to Top ↑</a></p>
+    </footer>
+
+  </div>
+
+  <!-- small inline script to set focus on main when used via keyboard anchors (optional) -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        // allow normal empty / top links
+        if(id && id !== "#"){
+          setTimeout(()=>{
+            const el = document.querySelector(id);
+            if(el) el.setAttribute('tabindex','-1'), el.focus();
+          }, 100);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
