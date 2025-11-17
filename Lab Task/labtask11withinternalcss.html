@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Library Management System</title>
+
+  <style>
+    /* ---------- Root / page ---------- */
+    :root{
+      --page-max: 1200px;
+      --accent-green: #9ef29e; /* highlighted row */
+      --accent-border: #e6e6e6;
+      --muted: #5b5b5b;
+      --gap: 18px;
+    }
+
+    html,body{
+      margin:0;
+      padding:0;
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color:#111;
+      background:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .container{
+      max-width: var(--page-max);
+      margin: 18px auto;
+      padding: 20px;
+    }
+
+    /* ---------- Header ---------- */
+    header.site-header{
+      margin-bottom: 18px;
+    }
+
+    header.site-header h1{
+      margin:0 0 12px 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 56px;          /* large like screenshot */
+      line-height: 1;
+      letter-spacing: .6px;
+    }
+
+    /* ---------- Form row ---------- */
+    .form-row{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:12px;
+      margin-bottom: 22px;
+    }
+
+    .form-row label{
+      font-size:20px;
+      margin-right:6px;
+    }
+
+    .form-row input[type="text"],
+    .form-row input[type="number"]{
+      padding:8px 10px;
+      font-size:16px;
+      border:1px solid var(--accent-border);
+      border-radius:4px;
+      min-width:260px;
+    }
+
+    .form-row button{
+      padding:8px 12px;
+      font-size:16px;
+      border-radius:6px;
+      border:1px solid rgba(0,0,0,0.08);
+      background:#fff;
+      cursor:pointer;
+      box-shadow: 0 2px 6px rgba(16,24,40,0.04);
+    }
+
+    .form-row button:hover{
+      transform: translateY(-1px);
+      transition:transform .12s ease;
+    }
+
+    /* ---------- Section title ---------- */
+    h2.section-title{
+      font-size:36px;
+      margin:8px 0 14px 0;
+      font-family: "Georgia", serif;
+    }
+
+    /* ---------- Table ---------- */
+    .book-table{
+      width:100%;
+      border-collapse:collapse;
+      border:1px solid var(--accent-border);
+      table-layout:fixed;
+    }
+
+    .book-table thead th{
+      text-align:left;
+      padding:18px 14px;
+      background: #fff;
+      font-size:20px;
+      border-bottom:1px solid var(--accent-border);
+    }
+
+    .book-table tbody td{
+      padding:18px 14px;
+      font-size:20px;
+      vertical-align:middle;
+      border-top:1px solid rgba(0,0,0,0.02);
+      word-wrap:break-word;
+    }
+
+    /* highlighted row styling */
+    .book-table tbody tr.highlight td{
+      background: var(--accent-green);
+    }
+
+    /* make first column wider and second centered */
+    .book-table tbody td.title-col{
+      width: 75%;
+    }
+    .book-table tbody td.year-col{
+      width: 25%;
+      text-align:center;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width:720px){
+      header.site-header h1{ font-size:34px; }
+      .form-row{ flex-direction:column; align-items:flex-start; }
+      .form-row input[type="text"], .form-row input[type="number"]{ min-width:100%; width:100%; }
+      .book-table thead th, .book-table tbody td{ font-size:18px; padding:12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="site-header" role="banner">
+      <h1>Library Management System</h1>
+
+      <!-- Form for adding a book (visual only) -->
+      <form class="form-row" onsubmit="event.preventDefault();">
+        <label for="title">Book Title:</label>
+        <input id="title" name="title" type="text" placeholder="Enter book title" value="ABC" />
+
+        <label for="year">Publication Year:</label>
+        <input id="year" name="year" type="number" placeholder="Enter publication year" value="2022" />
+
+        <button type="submit">Add Book</button>
+      </form>
+    </header>
+
+    <main>
+      <h2 class="section-title">Book List</h2>
+
+      <table class="book-table" aria-describedby="book-list">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Year</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- highlighted row like screenshot -->
+          <tr class="highlight" role="row">
+            <td class="title-col">ABC</td>
+            <td class="year-col">2022</td>
+          </tr>
+
+          <!-- Example empty row to preserve table height if needed
+          <tr>
+            <td class="title-col">&nbsp;</td>
+            <td class="year-col">&nbsp;</td>
+          </tr>
+          -->
+        </tbody>
+      </table>
+    </main>
+
+  </div>
+</body>
+</html>
