@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab Task 09 – News Portal Layout</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f0f2f5;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* ---------- CONTAINER ---------- */
+        .container {
+            width: 100%;
+            white-space: nowrap; /* prevents wrapping */
+            margin-top: 20px;
+            text-align: center; /* centers inline-block elements */
+        }
+
+        /* ---------- COMMON BOX STYLE ---------- */
+        .box {
+            display: inline-block;
+            vertical-align: top;           /* aligns top edges */
+            padding: 15px;
+            margin: 5px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            min-height: 500px;
+            white-space: normal;           /* allow text inside box to wrap */
+        }
+
+        /* ---------- SIDEBAR ---------- */
+        .sidebar {
+            width: 20%;
+            background-color: #e0f2ff;
+        }
+
+        /* ---------- MAIN CONTENT ---------- */
+        .main {
+            width: 60%;
+            background-color: #fff8e6;
+        }
+
+        /* ---------- ADVERTISEMENT ---------- */
+        .ads {
+            width: 20%;
+            background-color: #ffe7e7;
+        }
+
+        /* ---------- HEADINGS ---------- */
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+        <div class="box sidebar">
+            <h2>Categories</h2>
+            <p>- Technology</p>
+            <p>- Sports</p>
+            <p>- Business</p>
+            <p>- Lifestyle</p>
+            <p>- Entertainment</p>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="box main">
+            <h2>Latest News</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Vestibulum finibus ante id libero commodo, in varius arcu vestibulum.
+                Praesent quis libero vitae justo aliquam viverra. Integer sit amet 
+                neque nec dui lacinia consequat.  
+            </p>
+            <p>
+                Aenean pharetra, orci eget dapibus fermentum, ipsum mi lacinia urna, 
+                sed dapibus felis turpis et eros. Nulla facilisi. Duis consectetur 
+                augue eu nisl laoreet, ac facilisis velit porttitor.
+            </p>
+        </div>
+
+        <!-- ADS -->
+        <div class="box ads">
+            <h2>Advertisement</h2>
+            <p>Buy the latest gadgets!</p>
+            <p>50% Discount – Limited Time.</p>
+            <p>Click to learn more.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
